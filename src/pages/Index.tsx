@@ -410,8 +410,8 @@ const Index = () => {
                       className="w-16 h-16 rounded-full object-cover"
                     />
                     <div>
-                      <h4 className="text-lg font-semibold">Анна Ветрова</h4>
-                      <p className="text-gray-600">Руководитель направления</p>
+                      <h4 className="text-lg font-semibold">Екатерина Киян</h4>
+                      <p className="text-gray-600">Менеджер по продаже туров</p>
                       <a href="tel:+79818271353" className="text-sm font-medium text-gray-800 hover:text-black transition-colors">
                         +7 981 827-13-53
                       </a>
