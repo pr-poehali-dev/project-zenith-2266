@@ -295,7 +295,22 @@ const Index = () => {
               {/* Left Column - Contact Form */}
               <div className="rounded-2xl bg-white/95 text-black p-8 shadow-2xl">
                 <h3 className="text-2xl font-bold mb-6">Отправить запрос</h3>
-                <form className="space-y-6">
+                <form
+                  className="space-y-6"
+                  action="mailto:EKVveter@yandex.ru"
+                  method="get"
+                  encType="text/plain"
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    const form = e.currentTarget
+                    const name = (form.querySelector('#name') as HTMLInputElement).value
+                    const email = (form.querySelector('#email') as HTMLInputElement).value
+                    const message = (form.querySelector('#message') as HTMLTextAreaElement).value
+                    const subject = encodeURIComponent(`Заявка на тур от ${name}`)
+                    const body = encodeURIComponent(`Имя: ${name}\nEmail: ${email}\n\n${message}`)
+                    window.location.href = `mailto:EKVveter@yandex.ru?subject=${subject}&body=${body}`
+                  }}
+                >
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Имя
@@ -303,6 +318,7 @@ const Index = () => {
                     <input
                       type="text"
                       id="name"
+                      required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Ваше полное имя"
                     />
@@ -314,6 +330,7 @@ const Index = () => {
                     <input
                       type="email"
                       id="email"
+                      required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="your.email@example.com"
                     />
@@ -325,11 +342,12 @@ const Index = () => {
                     <textarea
                       id="message"
                       rows={5}
+                      required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                       placeholder="Куда хотите поехать и в какие даты?"
                     />
                   </div>
-                  <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-lg py-3 font-normal text-base">
+                  <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800 rounded-lg py-3 font-normal text-base">
                     Отправить сообщение
                   </Button>
                 </form>
@@ -356,10 +374,12 @@ const Index = () => {
                       <p className="text-gray-600">Руководитель направления</p>
                     </div>
                   </div>
-                  <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-lg flex items-center justify-center gap-2">
-                    <Mail className="w-4 h-4" />
-                    Написать
-                  </Button>
+                  <a href="mailto:EKVveter@yandex.ru">
+                    <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-lg flex items-center justify-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      Написать
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
