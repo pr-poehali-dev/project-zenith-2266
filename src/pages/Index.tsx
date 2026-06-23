@@ -405,8 +405,8 @@ const Index = () => {
                 <div className="rounded-2xl bg-white/95 text-black p-6 shadow-2xl">
                   <div className="flex items-center gap-4 mb-4">
                     <img
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-                      alt="Анна Ветрова"
+                      src="https://cdn.poehali.dev/projects/01fe6a77-e794-42da-904d-8644b54cbd37/bucket/22514230-6742-444f-80ee-e83c8824db2a.jpg"
+                      alt="Екатерина Киян"
                       className="w-16 h-16 rounded-full object-cover"
                     />
                     <div>
