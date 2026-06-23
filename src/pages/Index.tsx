@@ -294,61 +294,101 @@ const Index = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               {/* Left Column - Contact Form */}
               <div className="rounded-2xl bg-white/95 text-black p-8 shadow-2xl">
-                <h3 className="text-2xl font-bold mb-6">Отправить запрос</h3>
+                <h3 className="text-2xl font-bold mb-6">Заявка на тур</h3>
                 <form
-                  className="space-y-6"
-                  action="mailto:EKVveter@yandex.ru"
-                  method="get"
-                  encType="text/plain"
+                  className="space-y-4"
                   onSubmit={(e) => {
                     e.preventDefault()
                     const form = e.currentTarget
-                    const name = (form.querySelector('#name') as HTMLInputElement).value
+                    const fio = (form.querySelector('#fio') as HTMLInputElement).value
                     const email = (form.querySelector('#email') as HTMLInputElement).value
-                    const message = (form.querySelector('#message') as HTMLTextAreaElement).value
-                    const subject = encodeURIComponent(`Заявка на тур от ${name}`)
-                    const body = encodeURIComponent(`Имя: ${name}\nEmail: ${email}\n\n${message}`)
+                    const phone = (form.querySelector('#phone') as HTMLInputElement).value
+                    const direction = (form.querySelector('#direction') as HTMLInputElement).value
+                    const dates = (form.querySelector('#dates') as HTMLInputElement).value
+                    const tourists = (form.querySelector('#tourists') as HTMLInputElement).value
+                    const comment = (form.querySelector('#comment') as HTMLTextAreaElement).value
+                    const subject = encodeURIComponent(`Заявка на тур от ${fio}`)
+                    const body = encodeURIComponent(
+                      `ФИО: ${fio}\nEmail: ${email}\nТелефон: ${phone}\n\nНаправление: ${direction}\nЖелаемые даты: ${dates}\nКоличество туристов: ${tourists}\n\nКомментарий:\n${comment}`
+                    )
                     window.location.href = `mailto:EKVveter@yandex.ru?subject=${subject}&body=${body}`
                   }}
                 >
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Имя
-                    </label>
+                    <label htmlFor="fio" className="block text-sm font-medium mb-1">ФИО</label>
                     <input
                       type="text"
-                      id="name"
+                      id="fio"
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Ваше полное имя"
+                      placeholder="Иванов Иван Иванович"
                     />
                   </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="email@example.com"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium mb-1">Телефон</label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="+7 (___) ___-__-__"
+                      />
+                    </div>
+                  </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email
-                    </label>
+                    <label htmlFor="direction" className="block text-sm font-medium mb-1">Желаемое направление</label>
                     <input
-                      type="email"
-                      id="email"
+                      type="text"
+                      id="direction"
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="your.email@example.com"
+                      placeholder="Алтай, Камчатка, Байкал..."
                     />
                   </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="dates" className="block text-sm font-medium mb-1">Желаемые даты</label>
+                      <input
+                        type="text"
+                        id="dates"
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Например, июль 2026"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="tourists" className="block text-sm font-medium mb-1">Кол-во туристов</label>
+                      <input
+                        type="number"
+                        id="tourists"
+                        min="1"
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="1"
+                      />
+                    </div>
+                  </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Сообщение
-                    </label>
+                    <label htmlFor="comment" className="block text-sm font-medium mb-1">Комментарий</label>
                     <textarea
-                      id="message"
-                      rows={5}
-                      required
+                      id="comment"
+                      rows={3}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                      placeholder="Куда хотите поехать и в какие даты?"
+                      placeholder="Пожелания, вопросы..."
                     />
                   </div>
                   <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800 rounded-lg py-3 font-normal text-base">
-                    Отправить сообщение
+                    Отправить заявку
                   </Button>
                 </form>
               </div>
